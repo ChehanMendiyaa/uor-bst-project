@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sips -g pixelWidth -g pixelHeight assets/document-pages/page-01.png)",
+      "Bash(python3 -c \"import PIL; print\\(PIL.__version__\\)\")",
+      "Bash(magick -version)",
+      "Bash(pip3 install *)",
+      "Bash(python3 -c ' *)",
+      "Bash(ls /System/Library/Fonts/Supplemental/ | grep -iE \"avenir|futura|georgia|didot|baskerville|garamond|helvetica|arial|playfair|didone|Big Caslon|Optima\" )",
+      "Read(//System/Library/Fonts/Supplemental/**)",
+      "Bash(ls /System/Library/Fonts/ | grep -iE \"helvetica|avenir\"; ls /System/Library/Fonts/Supplemental/ | grep -iE \"avenir|helvetica\")",
+      "Read(//System/Library/Fonts/**)",
+      "Bash(rm -rf /Users/fazmifaizaan/Downloads/bst-project/assets/cover; echo done)",
+      "Bash(curl -s http://localhost:8791/index.html)",
+      "Bash(lsof -ti:8791 -sTCP:LISTEN)",
+      "Bash(chromium-cli --help)",
+      "Bash(npx -y playwright --version)",
+      "Bash(python3 -c \"import playwright; print\\('playwright ok'\\)\")",
+      "Bash(python3 -c \"import selenium; print\\('selenium ok'\\)\")",
+      "Read(//Applications/**)",
+      "Bash(python3 /private/tmp/claude-501/-Users-fazmifaizaan-Downloads-bst-project/316b2c1f-e78f-4756-a600-d71515ec4327/scratchpad/test_flip.py)",
+      "Bash(xargs -r kill)",
+      "Bash(lsof -ti:8792 -sTCP:LISTEN)",
+      "Bash(git config *)",
+      "Bash(brew install *)",
+      "Bash(gh auth *)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(gh repo *)"
+    ],
+    "additionalDirectories": [
+      "/Users/fazmifaizaan/Downloads/bst-project/assets/cover"
+    ]
+  }
+}
