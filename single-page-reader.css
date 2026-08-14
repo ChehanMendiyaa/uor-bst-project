@@ -1,0 +1,89 @@
+/* =========================================
+   Single PDF-Style Portrait Page
+   ========================================= */
+
+.book {
+  width: calc(var(--book-height) * 0.707) !important;
+}
+
+.page,
+.cover {
+  left: 0 !important;
+  width: 100% !important;
+}
+
+.page-right,
+.spread-left,
+.spread-right {
+  left: 0 !important;
+}
+
+/* Right-side page shadow / edge */
+.page-right::after,
+.spread-right::after {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+
+/* Page number position */
+.page-right .folio,
+.spread-right .folio {
+  right: 47px;
+}
+
+.document-page::after {
+  display: none;
+}
+
+/* The supplied paper texture appears behind every PDF-rendered page. */
+.document-page {
+  background-color: #f8f8f5;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  background-size: contain, cover;
+}
+
+/* Slower page flip animation — also drives the fold-shading timing
+   since both reference the same --flip-duration custom property. */
+.flip-sheet {
+  --flip-duration: 1.15s;
+}
+
+/* Forward page flip */
+.flip-forward {
+  left: 0 !important;
+  transform-origin: left center;
+}
+
+/* Backward page flip — same left hinge as forward (see reader-upgrade.css
+   for why a right-edge origin gets culled by this stage's perspective). */
+.flip-back {
+  left: 0 !important;
+  transform-origin: left center;
+}
+
+/* =========================================
+   Tablet / Mobile
+   ========================================= */
+
+@media (max-width: 700px) {
+  .book {
+    width: min(97vw, calc(var(--book-height) * 0.707)) !important;
+  }
+
+  .page-right .folio,
+  .spread-right .folio {
+    right: 25px;
+  }
+}
+
+/* =========================================
+   Small Mobile
+   ========================================= */
+
+@media (max-width: 430px) {
+  .book {
+    width: min(98vw, calc(var(--book-height) * 0.707)) !important;
+  }
+}

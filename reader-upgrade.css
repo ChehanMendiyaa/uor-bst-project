@@ -1,0 +1,264 @@
+.reader-shell {
+  --book-height: min(75vh, calc(86vw / 1.414));
+}
+
+.book-stage {
+  height: calc(var(--book-height) + 70px);
+  min-height: 440px;
+  max-height: 850px;
+}
+
+.book {
+  height: var(--book-height);
+  width: calc(var(--book-height) * 1.414);
+}
+
+.spread-left {
+  left: 0 !important;
+  border-right: 1px solid #d1c8bb;
+}
+
+.spread-right {
+  left: 50% !important;
+}
+
+.spread-right::after {
+  left: 0;
+  right: auto;
+  transform: scaleX(-1);
+}
+
+.spread-right .folio {
+  right: 47px;
+}
+
+.blank-page {
+  background: #f0e8dc;
+  align-items: center;
+  justify-content: center;
+}
+
+.blank-page span {
+  font: 10px "DM Mono";
+  letter-spacing: 3px;
+  color: #b4aa9c;
+}
+
+/* Page Flip Animation */
+.flip-sheet {
+  display: block !important;
+  z-index: 8;
+
+  /* Shared by the rotation and the fold-shading keyframes below so
+     the two always stay in sync, including per-breakpoint overrides. */
+  --flip-duration: 0.62s;
+
+  backface-visibility: hidden;
+
+  /* Decorative clone only — real links/buttons live on the actual page. */
+  pointer-events: none;
+
+  animation: turnSheet var(--flip-duration) cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.flip-forward {
+  left: 50% !important;
+  transform-origin: left center;
+}
+
+.flip-back {
+  left: 0 !important;
+  /* Pivoting from the right edge pushed the far side of the sheet
+     past the camera plane under this stage's perspective, causing
+     browsers to cull the whole element mid-rotation. Left keeps the
+     same hinge as the forward flip and renders reliably. */
+  transform-origin: left center;
+  animation-name: turnBack;
+}
+
+/* Fold shading: a soft shadow near the spine and a faint specular
+   highlight further along, giving the flat rotating sheet a sense of
+   curvature and changing light as it turns. */
+.flip-sheet::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  pointer-events: none;
+  backface-visibility: hidden;
+
+  opacity: 0;
+  animation: foldShade var(--flip-duration) cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Both directions now hinge from the left edge, so they share the
+   same shading gradient (shadow near the spine, highlight beyond it). */
+.flip-forward::before,
+.flip-back::before {
+  background: linear-gradient(
+    90deg,
+    rgba(20, 15, 10, 0.5),
+    rgba(20, 15, 10, 0) 35%,
+    rgba(255, 255, 255, 0.22) 60%,
+    rgba(255, 255, 255, 0) 85%
+  );
+}
+
+/* Forward Flip: current page lifts and rotates away at the spine. */
+@keyframes turnSheet {
+  0% {
+    transform: rotateY(0);
+    opacity: 1;
+    box-shadow: 0 0 0 rgba(20, 15, 10, 0);
+  }
+
+  40% {
+    opacity: 0.55;
+    box-shadow: 30px 0 45px -12px rgba(20, 15, 10, 0.4);
+  }
+
+  to {
+    transform: rotateY(-180deg);
+    opacity: 0.15;
+    box-shadow: 0 0 0 rgba(20, 15, 10, 0);
+  }
+}
+
+/* Backward Flip: previous page rotates back into place at the spine. */
+@keyframes turnBack {
+  0% {
+    transform: rotateY(-180deg);
+    opacity: 0.15;
+    box-shadow: 0 0 0 rgba(20, 15, 10, 0);
+  }
+
+  60% {
+    opacity: 0.55;
+    box-shadow: -30px 0 45px -12px rgba(20, 15, 10, 0.4);
+  }
+
+  to {
+    transform: rotateY(0);
+    opacity: 1;
+    box-shadow: 0 0 0 rgba(20, 15, 10, 0);
+  }
+}
+
+/* Fold shadow/highlight peaks as the sheet passes edge-on (~90deg),
+   which falls near the midpoint of either direction's timeline. */
+@keyframes foldShade {
+  0% {
+    opacity: 0;
+  }
+
+  45% {
+    opacity: 0.55;
+  }
+
+  60% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* =========================
+   Tablet / Mobile
+   ========================= */
+
+@media (max-width: 700px) {
+  .reader-shell {
+    --book-height: min(79svh, calc(97vw / 0.707));
+  }
+
+  .book-stage {
+    height: calc(var(--book-height) + 48px);
+    min-height: 410px;
+  }
+
+  .book {
+    height: var(--book-height);
+    width: calc(var(--book-height) * 1.414);
+  }
+
+  .book-nav {
+    width: 42px;
+    height: 42px;
+  }
+
+  .book-nav.prev {
+    left: -10px;
+  }
+
+  .book-nav.next {
+    right: -10px;
+  }
+
+  .spread-right .folio {
+    right: 25px;
+  }
+}
+
+/* =========================
+   Small Mobile
+   ========================= */
+
+@media (max-width: 430px) {
+  .reader-shell {
+    --book-height: min(76svh, calc(98vw / 0.707));
+  }
+
+  .book-stage {
+    height: calc(var(--book-height) + 40px);
+    min-height: 350px;
+  }
+
+  .book {
+    height: var(--book-height);
+    width: calc(var(--book-height) * 1.414);
+  }
+
+  .page {
+    padding: 23px 18px;
+  }
+
+  .cover {
+    padding: 38px 31px;
+  }
+
+  .cover h2 {
+    font-size: 62px;
+  }
+
+  .editorial h2,
+  .feature h2,
+  .closing h2 {
+    font-size: 25px;
+  }
+
+  .body-copy {
+    font-size: 9px;
+    line-height: 1.65;
+  }
+
+  .reader-topbar {
+    padding: 0 8px 13px;
+  }
+
+  .book-nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  .book-nav.prev {
+    left: -14px;
+  }
+
+  .book-nav.next {
+    right: -14px;
+  }
+}

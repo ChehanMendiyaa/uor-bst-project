@@ -1,0 +1,1152 @@
+/* =========================================================
+   ROOT VARIABLES
+   ========================================================= */
+
+:root {
+  --ink: #192426;
+  --paper: #f6f1e9;
+  --orange: #ef613d;
+  --line: #dcd4c8;
+
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "Plus Jakarta Sans", sans-serif;
+  --mono: "DM Mono", monospace;
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: #f8f5ef;
+  font-family: var(--sans);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+  height: 82px;
+  padding: 0 6vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  background: #fbf9f4;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  color: var(--ink);
+  text-decoration: none;
+
+  font: 700 21px var(--sans);
+  letter-spacing: -1.3px;
+}
+
+.brand span {
+  font-weight: 400;
+}
+
+.brand i {
+  display: inline-block;
+
+  width: 7px;
+  height: 7px;
+
+  margin: 0 0 12px 3px;
+
+  background: var(--orange);
+  border-radius: 50%;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+nav {
+  display: flex;
+  gap: 34px;
+  margin-left: 8vw;
+}
+
+nav a {
+  color: #66706e;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+nav a:hover {
+  color: var(--ink);
+}
+
+nav a.active {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   UPLOAD BUTTON
+   ========================================================= */
+
+.upload-trigger {
+  padding: 12px 17px;
+
+  border: 0;
+  border-radius: 2px;
+
+  background: var(--ink);
+  color: white;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.upload-trigger:hover {
+  opacity: 0.9;
+}
+
+.upload-trigger span {
+  margin-right: 5px;
+
+  font-size: 18px;
+  line-height: 0;
+  vertical-align: -1px;
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.intro {
+  max-width: 750px;
+  padding: 94px 6vw 52px;
+}
+
+.eyebrow,
+.kicker {
+  margin: 0 0 19px;
+
+  color: #9a988f;
+
+  font: 500 10px var(--mono);
+  letter-spacing: 1.3px;
+}
+
+.intro h1,
+.upload-section h2 {
+  margin: 0;
+
+  font: 600 clamp(46px, 7vw, 82px) / 0.97 var(--serif);
+  letter-spacing: -4px;
+}
+
+.intro h1 em,
+.upload-section em {
+  color: var(--orange);
+  font-weight: 500;
+}
+
+.intro-copy {
+  max-width: 420px;
+  margin: 27px 0 0;
+
+  color: #68716f;
+
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   READER
+   ========================================================= */
+
+.reader-shell {
+  padding: 23px 6vw 18px;
+  background: #e9e3d9;
+}
+
+.reader-topbar,
+.reader-footer {
+  max-width: 1040px;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reader-topbar {
+  padding-bottom: 17px;
+  font-size: 11px;
+}
+
+.reader-topbar strong {
+  margin-right: 13px;
+  font-weight: 700;
+}
+
+.reader-topbar span {
+  color: #8b8d89;
+}
+
+
+/* =========================================================
+   READER ACTIONS
+   ========================================================= */
+
+.reader-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.reader-actions button {
+  width: 29px;
+  height: 27px;
+
+  border: 1px solid #cfc8bd;
+
+  background: transparent;
+  color: #68716f;
+
+  font-size: 17px;
+}
+
+.reader-actions button:hover {
+  background: #f4efe7;
+}
+
+
+/* =========================================================
+   BOOK STAGE
+   ========================================================= */
+
+.book-stage {
+  position: relative;
+
+  max-width: 1040px;
+  height: 590px;
+
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  perspective: 1900px;
+}
+
+.book-shadow {
+  position: absolute;
+
+  width: 45%;
+  height: 7%;
+
+  bottom: 4%;
+
+  background: #7c7163;
+  border-radius: 50%;
+
+  filter: blur(23px);
+  opacity: 0.3;
+}
+
+
+/* =========================================================
+   SINGLE PORTRAIT BOOK
+   ========================================================= */
+
+.book {
+  position: relative;
+
+  width: calc(min(870px, 86vw) * 0.707);
+  height: min(510px, 75vh);
+
+  transform-style: preserve-3d;
+}
+
+
+/* =========================================================
+   PAGES
+   ========================================================= */
+
+.page {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 44px 48px;
+
+  display: none;
+
+  overflow: hidden;
+
+  background: var(--paper);
+
+  box-shadow: 0 5px 18px #59514826;
+}
+
+.page-visible {
+  display: block;
+}
+
+
+/* Right page compatibility */
+.page-right,
+.spread-left,
+.spread-right {
+  left: 0 !important;
+}
+
+
+/* Page edge */
+.page:not(.cover)::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 13px;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #d9d0c3a0
+  );
+}
+
+.page-right::after,
+.spread-right::after {
+  left: auto;
+  right: 0;
+
+  transform: none;
+}
+
+
+/* =========================================================
+   COVER
+   ========================================================= */
+
+.cover {
+  z-index: 3;
+
+  width: 100%;
+
+  padding: 62px 76px;
+
+  background: #263e3e;
+  color: #f7eddf;
+}
+
+.cover::after {
+  display: none;
+}
+
+.cover p {
+  margin: 0;
+
+  font: 500 11px var(--mono);
+  letter-spacing: 3.6px;
+}
+
+.cover h2 {
+  position: relative;
+  z-index: 1;
+
+  margin: 68px 0 34px;
+
+  font: 600 96px / 0.73 var(--serif);
+  letter-spacing: -7px;
+}
+
+.cover h2 em {
+  color: #e8ad8b;
+  font-weight: 500;
+}
+
+.cover small {
+  position: relative;
+  z-index: 1;
+
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.cover b {
+  position: absolute;
+
+  right: 59px;
+  bottom: 52px;
+
+  color: #e8ad8b;
+
+  font: 500 53px var(--serif);
+}
+
+
+/* =========================================================
+   COVER ORBS
+   ========================================================= */
+
+.cover-orb {
+  position: absolute;
+
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+.orb-one {
+  top: -72px;
+  right: -68px;
+
+  width: 330px;
+  height: 330px;
+
+  background: #dd7957;
+  opacity: 0.85;
+}
+
+.orb-two {
+  right: 106px;
+  bottom: -140px;
+
+  width: 260px;
+  height: 260px;
+
+  border: 1px solid #9fb3a5;
+}
+
+
+/* =========================================================
+   PAGE NUMBER
+   ========================================================= */
+
+.folio {
+  position: absolute;
+
+  bottom: 35px;
+
+  color: #a29d94;
+
+  font: 10px var(--mono);
+}
+
+.page-right .folio,
+.spread-right .folio {
+  right: 47px;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.editorial h2,
+.feature h2,
+.closing h2 {
+  margin: 0 0 25px;
+
+  font: 600 39px / 1.02 var(--serif);
+  letter-spacing: -2px;
+}
+
+.editorial h2 em,
+.feature h2 em {
+  color: var(--orange);
+  font-weight: 500;
+}
+
+.body-copy {
+  max-width: 280px;
+
+  color: #67706c;
+
+  font: 13px / 1.8 var(--sans);
+}
+
+.signature {
+  margin-top: 29px;
+
+  font: italic 26px var(--serif);
+}
+
+
+/* =========================================================
+   PHOTOS
+   ========================================================= */
+
+.photo {
+  height: 100%;
+
+  margin: -44px -48px;
+
+  background-position: center;
+  background-size: cover;
+}
+
+.quote-photo {
+  background:
+    linear-gradient(
+      0deg,
+      #1f2b29a0,
+      #1f2b2918
+    ),
+    url("https://images.unsplash.com/photo-1518391846015-55a9cc003b25?auto=format&fit=crop&w=800&q=80")
+      center / cover;
+}
+
+.quote-photo span {
+  position: absolute;
+
+  top: 58px;
+  left: 43px;
+
+  color: white;
+
+  font: italic 33px / 1.08 var(--serif);
+  letter-spacing: -1.5px;
+}
+
+.desk-photo {
+  background-image:
+    url("https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=800&q=80");
+}
+
+.image-caption {
+  position: absolute;
+
+  bottom: 33px;
+  left: 48px;
+
+  color: white;
+
+  font: 10px var(--mono);
+  letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   FEATURE
+   ========================================================= */
+
+.feature a {
+  position: absolute;
+
+  bottom: 48px;
+
+  color: var(--ink);
+
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.feature a:hover {
+  color: var(--orange);
+}
+
+.feature a span {
+  margin-left: 7px;
+
+  color: var(--orange);
+
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   CLOSING PAGE
+   ========================================================= */
+
+.closing {
+  background: #e9ad8c;
+}
+
+.closing h2 {
+  font-size: 42px;
+}
+
+.closing-mark {
+  margin-top: 50px;
+
+  color: #e96b44;
+
+  font: italic 125px / 0.8 var(--serif);
+}
+
+.closing small {
+  position: absolute;
+
+  bottom: 38px;
+
+  font: 10px var(--mono);
+}
+
+
+/* =========================================================
+   BOOK NAVIGATION
+   ========================================================= */
+
+.book-nav {
+  position: absolute;
+  z-index: 8;
+
+  top: 50%;
+
+  width: 46px;
+  height: 46px;
+
+  border: 0;
+  border-radius: 50%;
+
+  transform: translateY(-50%);
+
+  background: #fbf8f1;
+  color: var(--ink);
+
+  font-size: 20px;
+
+  box-shadow: 0 4px 14px #4d433522;
+}
+
+.book-nav.prev {
+  left: 0;
+}
+
+.book-nav.next {
+  right: 0;
+}
+
+.book-nav:hover:not(:disabled) {
+  transform: translateY(-50%) scale(1.05);
+}
+
+.book-nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.reader-footer {
+  padding-top: 11px;
+
+  color: #858880;
+
+  font-size: 10px;
+}
+
+.dot {
+  display: inline-block;
+
+  width: 6px;
+  height: 6px;
+
+  margin-right: 5px;
+
+  background: var(--orange);
+  border-radius: 50%;
+}
+
+.page-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.page-dots button {
+  width: 5px;
+  height: 5px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: #bcb6ac;
+}
+
+.page-dots button.active {
+  background: var(--ink);
+  transform: scale(1.35);
+}
+
+
+/* =========================================================
+   PAGE FLIP
+   ========================================================= */
+
+.flipping-next,
+.flipping-prev {
+  display: block !important;
+
+  z-index: 5;
+
+  backface-visibility: hidden;
+}
+
+.flipping-next {
+  animation: flipNext 1.15s cubic-bezier(
+    0.4,
+    0,
+    0.2,
+    1
+  ) forwards;
+
+  transform-origin: left center;
+}
+
+.flipping-prev {
+  animation: flipPrev 1.15s cubic-bezier(
+    0.4,
+    0,
+    0.2,
+    1
+  ) forwards;
+
+  transform-origin: right center;
+}
+
+@keyframes flipNext {
+  from {
+    transform: rotateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: rotateY(-180deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes flipPrev {
+  from {
+    transform: rotateY(-180deg);
+    opacity: 0.2;
+  }
+
+  to {
+    transform: rotateY(0);
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   UPLOAD SECTION
+   ========================================================= */
+
+.upload-section {
+  padding: 120px 8vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12vw;
+
+  background: #fbf9f4;
+}
+
+.upload-section > div {
+  max-width: 430px;
+}
+
+.upload-section h2 {
+  font-size: 52px;
+}
+
+.upload-section > div > p:last-child {
+  max-width: 350px;
+
+  color: #67706c;
+
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   DROPZONE
+   ========================================================= */
+
+.dropzone {
+  width: 370px;
+  height: 255px;
+
+  border: 1px dashed #bbb2a5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background: #f5f0e8;
+
+  transition: 0.2s;
+}
+
+.dropzone.dragging {
+  border-color: var(--orange);
+  background: #fff8ef;
+}
+
+.upload-icon {
+  margin-bottom: 12px;
+
+  color: var(--orange);
+
+  font: 34px var(--serif);
+}
+
+.dropzone strong {
+  font-size: 13px;
+}
+
+.dropzone small {
+  margin: 8px 0 16px;
+
+  color: #90938e;
+
+  font-size: 11px;
+}
+
+.dropzone button,
+.modal-upload {
+  padding: 9px 14px;
+
+  border: 0;
+
+  background: var(--orange);
+  color: white;
+
+  font: 600 11px var(--sans);
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   UPLOAD MODAL
+   ========================================================= */
+
+.upload-modal {
+  position: fixed;
+  z-index: 20;
+
+  inset: 0;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  background: #1a2525aa;
+}
+
+.upload-modal.open {
+  display: flex;
+}
+
+.modal-card {
+  position: relative;
+
+  width: min(480px, 90vw);
+
+  padding: 55px;
+
+  background: #f9f5ed;
+}
+
+.modal-card h2 {
+  margin: 0 0 18px;
+
+  font: 600 45px / 0.98 var(--serif);
+  letter-spacing: -2px;
+}
+
+.modal-card h2 em {
+  color: var(--orange);
+  font-weight: 500;
+}
+
+.modal-card > p:not(.eyebrow) {
+  max-width: 320px;
+
+  margin-bottom: 28px;
+
+  color: #68716f;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.modal-upload {
+  display: inline-block;
+}
+
+.modal-card small {
+  display: block;
+
+  margin-top: 12px;
+
+  color: #96938c;
+
+  font-size: 10px;
+}
+
+.close-modal {
+  position: absolute;
+
+  top: 13px;
+  right: 18px;
+
+  border: 0;
+
+  background: transparent;
+  color: #65706d;
+
+  font-size: 27px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .site-header {
+    height: 70px;
+    padding: 0 5vw;
+  }
+
+  .site-header nav {
+    display: none;
+  }
+
+  .upload-trigger {
+    padding: 10px;
+    font-size: 10px;
+  }
+
+
+  /* Intro */
+
+  .intro {
+    padding: 70px 7vw 38px;
+  }
+
+
+  /* Reader */
+
+  .reader-shell {
+    padding: 18px 3vw;
+  }
+
+  .reader-footer p {
+    max-width: 230px;
+    line-height: 1.5;
+  }
+
+
+  /* Book */
+
+  .book-stage {
+    height: 440px;
+  }
+
+  .book {
+    width: min(92vw, 340px);
+    height: 380px;
+  }
+
+  .page {
+    padding: 27px 25px;
+  }
+
+
+  /* Cover */
+
+  .cover {
+    padding: 48px 45px;
+  }
+
+  .cover h2 {
+    margin: 49px 0 28px;
+    font-size: 70px;
+  }
+
+  .cover b {
+    right: 35px;
+    bottom: 37px;
+  }
+
+
+  /* Content */
+
+  .editorial h2,
+  .feature h2,
+  .closing h2 {
+    font-size: 28px;
+  }
+
+  .body-copy {
+    font-size: 10px;
+  }
+
+  .photo {
+    margin: -27px -25px;
+  }
+
+
+  /* Navigation */
+
+  .book-nav {
+    width: 36px;
+    height: 36px;
+  }
+
+  .book-nav.prev {
+    left: -7px;
+  }
+
+  .book-nav.next {
+    right: -7px;
+  }
+
+
+  /* Quote */
+
+  .quote-photo span {
+    top: 45px;
+    left: 25px;
+
+    font-size: 26px;
+  }
+
+  .page-right .folio,
+  .spread-right .folio {
+    right: 25px;
+  }
+
+
+  /* Upload */
+
+  .upload-section {
+    padding: 75px 7vw;
+
+    display: block;
+  }
+
+  .upload-section h2 {
+    font-size: 45px;
+  }
+
+  .dropzone {
+    width: 100%;
+    margin-top: 35px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 430px) {
+
+  .intro {
+    padding-top: 55px;
+  }
+
+  .book-stage {
+    height: 410px;
+  }
+
+  .book {
+    width: calc(92vw * 0.707);
+    height: min(67vh, 370px);
+  }
+
+  .page {
+    padding: 23px 18px;
+  }
+
+  .cover {
+    padding: 38px 31px;
+  }
+
+  .cover h2 {
+    font-size: 62px;
+  }
+
+  .editorial h2,
+  .feature h2,
+  .closing h2 {
+    font-size: 25px;
+  }
+
+  .body-copy {
+    font-size: 9px;
+    line-height: 1.65;
+  }
+
+  .reader-topbar {
+    padding: 0 8px 13px;
+  }
+
+  .book-nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  .book-nav.prev {
+    left: -14px;
+  }
+
+  .book-nav.next {
+    right: -14px;
+  }
+
+  .page-right .folio,
+  .spread-right .folio {
+    right: 25px;
+  }
+}

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PageTurn — Digital Magazine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="reader-upgrade.css" />
+  <link rel="stylesheet" href="single-page-reader.css" />
+  <link rel="stylesheet" href="responsive-reader.css" />
+  <link rel="stylesheet" href="controls-upgrade.css" />
+  <link rel="stylesheet" href="navigation-upgrade.css" />
+  <link rel="stylesheet" href="mobile-navigation.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h3 style="margin: 0;">Faculty Of Technology 10th Anniversary</h3>
+    <nav aria-label="Reader navigation"><a class="active" href="#reader">Read</a><a href="#about">Magazine</a></nav>
+    <span class="edition-label">Faculty Of Technology 10th Anniversary</span>
+  </header>
+
+  <main>
+    <section class="reader-shell" id="reader" aria-label="Magazine reader">
+      <div class="reader-topbar">
+        <div class="reader-actions"><button id="fullscreenBtn" title="Fullscreen">⛶</button></div>
+      </div>
+      <div class="book-stage" id="bookStage" aria-busy="true">
+        <div class="book-shadow"></div>
+        <div class="book" id="book">
+          <article class="page cover page-visible" data-page="0">
+            <div class="cover-orb orb-one"></div><div class="cover-orb orb-two"></div>
+            <p>THE SUNDAY EDIT</p><h2>the<br><em>art</em> of<br>slow</h2><small>A small collection of ideas<br>for a more considered life</small><b>04</b>
+          </article>
+          <article class="page editorial" data-page="1">
+            <span class="folio">01</span><p class="kicker">EDITOR'S LETTER</p><h2>Make room<br>for <em>wonder.</em></h2>
+            <p class="body-copy">The best things are rarely rushed. This issue is an invitation to look closer, linger longer, and embrace the deliciously unproductive moments in between.</p><div class="signature">Mara</div>
+          </article>
+          <article class="page photo-page page-right" data-page="2">
+            <div class="photo quote-photo"><span>“Go slowly.<br>The world is<br>waiting.”</span></div><span class="folio">02</span>
+          </article>
+          <article class="page feature" data-page="3">
+            <span class="folio">03</span><p class="kicker">A PLACE TO PAUSE</p><h2>In praise<br>of the <em>unplanned</em></h2>
+            <p class="body-copy">We spoke to three people who have made a practice of leaving space in their days — and found that a little emptiness goes a long way.</p><a href="#">Read the story <span>→</span></a>
+          </article>
+          <article class="page photo-page page-right" data-page="4">
+            <div class="photo desk-photo"></div><span class="folio">04</span><p class="image-caption">A sunlit studio, East London</p>
+          </article>
+          <article class="page closing" data-page="5">
+            <span class="folio">05</span><p class="kicker">UNTIL NEXT TIME</p><h2>Keep your eyes<br>open.</h2><div class="closing-mark">P</div><small>pageturn.mag</small>
+          </article>
+          <article class="page blank-page" data-page="6" aria-hidden="true"><span>THE END</span></article>
+        </div>
+        <button class="book-nav prev" id="prevBtn" aria-label="Previous page">&lt;</button>
+        <button class="book-nav next" id="nextBtn" aria-label="Next page">&gt;</button>
+      </div>
+      <div class="reader-footer"><div class="page-progress"><span id="progressCurrent">01</span><div class="page-dots" id="pageDots" aria-label="Page progress"></div><span id="progressTotal">69</span></div></div>
+    </section>
+
+  </main>
+  <script>window.DOCUMENT_PAGE_COUNT = 69;</script>
+  <script src="script.js"></script>
+</body>
+</html>
